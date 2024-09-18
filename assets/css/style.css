@@ -1,0 +1,156 @@
+@import url(_font.css);
+@import url(_reset.css);
+
+:root {
+    /* fonts */
+    --fw-regular: 500;
+    --fw-bold: 700;
+    --fw-black: 900;
+
+    /* fonts sizes */
+    /* Step -2: 12.5px → 12.8px */
+    --fs-step--2: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
+    /* Step -1: 15px → 16px */
+    --fs-step--1: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
+    /* Step 0: 18px → 20px */
+    --fs-step-0: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+    /* Step 1: 21.6px → 25px */
+    --fs-step-1: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
+    /* Step 2: 25.92px → 31.25px */
+    --fs-step-2: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
+    /* Step 3: 31.104px → 39.0625px */
+    --fs-step-3: clamp(1.944rem, 1.771rem + 0.8651vw, 2.4414rem);
+    /* Step 4: 37.3248px → 48.8281px */
+    --fs-step-4: clamp(2.3328rem, 2.0827rem + 1.2504vw, 3.0518rem);
+    /* Step 5: 44.7898px → 61.0352px */
+    --fs-step-5: clamp(2.7994rem, 2.4462rem + 1.7658vw, 3.8147rem);
+
+    /* colors */
+    /* ### Primary */
+    --clr-primary-pale-blue: hsl(225, 100%, 94%);
+    --clr-primary-bright-blue: hsl(245, 75%, 52%);
+
+    /* ### Neutral */
+    --clr-neutral-very-pale-blue: hsl(225, 100%, 98%);
+    --clr-neutral-desaturated-blue: hsl(224, 23%, 55%);
+    --clr-neutral-dark-blue: hsl(223, 47%, 23%);
+}
+
+body {
+    display: grid;
+
+    font-weight: var(--fw-regular);
+    font-size: var(--fs-step--1);
+    font-family: "Red Hat Display", sans-serif;
+
+    background-image: url(../images/pattern-background-desktop.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-color: var(--clr-primary-pale-blue);
+
+    place-items: center;
+
+    @media (max-width: 500px) {
+        background-image: url(../images/pattern-background-mobile.svg);
+        background-size: cover;
+    }
+}
+
+.card {
+    --width: clamp(36ch, 40vw, 40ch);
+    --grid-space: 1.5em;
+
+    display: grid;
+    grid-template-columns: [full-width-start] var(--fs-step-2) [content-start] 1fr [content-end] var(--fs-step-2) [full-width-end];
+    place-items: center;
+    row-gap: var(--grid-space);
+    padding-block-end: var(--grid-space);
+    width: var(--width);
+
+    text-align: center;
+
+    color: var(--clr-neutral-desaturated-blue);
+
+    background-color: #fff;
+    border-radius: 1rem;
+
+    & * {
+        margin: 0;
+        grid-column: content;
+    }
+
+    .card__img {
+        grid-column: full-width;
+        border-top-left-radius: inherit;
+        border-top-right-radius: inherit;
+        width: inherit;
+    }
+
+    h1,
+    h2 {
+        color: var(--clr-neutral-dark-blue);
+        font-weight: var(--fw-black);
+    }
+
+    .card__description {
+        width: 30ch;
+    }
+
+    .card__priceInfo {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        gap: 1em;
+        background-color: var(--clr-neutral-very-pale-blue);
+        border-radius: .8em;
+        padding: 1em;
+        
+        .card__price {
+            margin-right: auto;
+
+            .card__plan {
+                font-size: var(--fs-step--1);
+            }
+        }
+
+        .card__change {
+            color: var(--clr-primary-bright-blue);
+
+            &:hover,
+            &:focus {
+                text-decoration: none;
+                opacity: .8;
+            }
+        }
+    }
+
+    .card__payment {
+        width: 100%;
+        background-color: var(--clr-primary-bright-blue);
+        color: var(--clr-neutral-very-pale-blue);
+        border: 0;
+        padding: 1em;
+        border-radius: .5em;
+        font-weight: var(--fw-bold);
+        cursor: pointer;
+        box-shadow: 0 1em 1em 5px var(--clr-primary-pale-blue);
+
+        &:hover,
+        &:focus {
+            opacity: .8;
+        }
+    }
+
+    .card_cancel {
+        text-decoration: none;
+        color: var(--clr-neutral-desaturated-blue);
+        font-weight: var(--fw-bold);
+        
+        &:hover,
+        &:focus {
+            font-weight: var(--fw-black);
+            color: var(--clr-neutral-dark-blue);
+        }
+    }
+
+}
