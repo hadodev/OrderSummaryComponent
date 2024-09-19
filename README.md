@@ -36,7 +36,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [Github repository solution URL here](https://github.com/hadodev/OrderSummaryComponent)
-- Live Site URL: [Live site URL here](https://hadodev-frontendmentor-ordersummarycomponent.netlify.app/)
+- Live Site URL: [Live site URL here](https://hadodev-frontendmentor-ordersummary.netlify.app/)
 
 ## My process
 
